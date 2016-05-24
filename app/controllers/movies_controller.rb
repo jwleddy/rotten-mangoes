@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
   def index
-    @movie = Movies.all
+    @movies = Movie.all
   end
 
   def show
@@ -19,6 +19,7 @@ class MoviesController < ApplicationController
     else
       render :new
     end
+  end
 
   def edit
     @movie = Movie.find(params[:id])
@@ -46,5 +47,5 @@ class MoviesController < ApplicationController
     :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description
     )
   end
-  
+
 end
