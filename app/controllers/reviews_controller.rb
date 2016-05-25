@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   before_filter :load_movie
 
   def new
-    @review = @omvie.reviews.build
+    @review = @movie.reviews.build
   end
 
   def create
