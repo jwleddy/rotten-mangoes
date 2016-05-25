@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
       render :new
     end
   end
-
+  test
   protected
 
   def load_movie
