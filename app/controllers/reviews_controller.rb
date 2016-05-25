@@ -1,9 +1,10 @@
 class ReviewsController < ApplicationController
 
+  before_filter :restrict_access
   before_filter :load_movie
 
   def new
-    @review = @movie.reviews.build
+    @review = @omvie.reviews.build
   end
 
   def create
@@ -16,7 +17,7 @@ class ReviewsController < ApplicationController
       render :new
     end
   end
-  test
+
   protected
 
   def load_movie
