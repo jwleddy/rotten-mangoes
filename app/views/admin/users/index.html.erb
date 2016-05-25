@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+  <div>
+    <h4>Email: <%= link_to user.email, admin_user_path(user.id) %></h4>
+    <h4>Name: <%= user.full_name %></h4>
+    <small>Admin: <%= user.admin || "false" %></small>
+  </div>
+<% end %>
