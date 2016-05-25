@@ -8,6 +8,7 @@ class Movie < ActiveRecord::Base
   validates :poster_image_url, presence: true
   validates :release_date, presence: true
   validate :release_date_is_in_the_past
+  mount_uploader :poster_image, PosterImageUploader
 
   def review_average
     if reviews.size > 0
