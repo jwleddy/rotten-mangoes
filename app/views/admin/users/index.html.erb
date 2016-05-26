@@ -1,7 +1,26 @@
-<% @users.each do |user| %>
-  <div>
-    <h4>Email: <%= link_to user.email, admin_user_path(user.id) %></h4>
-    <h4>Name: <%= user.full_name %></h4>
-    <small>Admin: <%= user.admin || "false" %></small>
-  </div>
-<% end %>
+<% paginate @users %>
+<table>
+  <thead>
+    <tr>
+      <td>Email</td>
+      <td>Name</td>
+      <td>Admin?</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= link_to user.email, admin_user_path(user.id) %>
+      </td>
+      <td>
+        <%= user.full_name %>
+      </td>
+      <td>
+        <%= user.admin || "false" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to_previous_page @users, "Previous Page" %> | <%= link_to_next_page @users, "Next Page" %>
