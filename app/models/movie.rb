@@ -9,8 +9,7 @@ class Movie < ActiveRecord::Base
   validates :release_date, presence: true
   validate :release_date_is_in_the_past
   mount_uploader :poster_image, PosterImageUploader
-  scope :search_title, ->(title) { where('upper(title) LIKE ?',title) }
-  scope :search_director, ->(director) { where('upper(director) LIKE ?',director) }
+  scope :search_title_director, ->(term) { where('upper(title) LIKE ? OR upper(director) LIKE ?', term, term) }
   scope :under_90, -> { where('runtime_in_minutes <= 90') }
   scope :between_90_120, -> { where('runtime_in_minutes > 90 and runtime_in_minutes <= 120') }
   scope :over_120, -> { where('runtime_in_minutes > 120') }
