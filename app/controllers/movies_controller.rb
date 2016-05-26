@@ -3,8 +3,7 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
 
-    @movies = @movies.search_title("%#{params[:title].upcase}%") if params[:title].present?
-    @movies = @movies.search_director("%#{params[:director].upcase}%") if params[:director].present?
+    @movies = @movies.search_title_director("%#{params[:term].upcase}%") if params[:term].present?
     if params[:duration].present?
       case params[:duration].to_i
       when 1

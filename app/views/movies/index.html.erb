@@ -3,12 +3,8 @@
 <hr>
 <%= form_tag '/movies', method: :get do %>
   <div>
-  <%= label_tag(:title, "Title:") %>
-  <%= text_field_tag(:title) %>
-</div>
-<div>
-  <%= label_tag(:director, "Director:") %>
-  <%= text_field_tag(:director) %>
+  <%= label_tag(:term, "Search term:") %>
+  <%= text_field_tag(:term) %>
 </div>
 <div>
   <%= label_tag(:duration, "Duration:") %>
