@@ -1,5 +1,7 @@
 class Admin::UsersController < ApplicationController
 
+  before_filter :only_admins
+
   def index
     @users = User.order(:lastname).page params[:page]
   end
@@ -33,5 +35,6 @@ class Admin::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:firstname, :lastname, :email, :admin)
   end
+
 
 end
