@@ -8,5 +8,9 @@
      <% if current_user && current_user.admin %>
       <%= link_to "Admin Panel", admin_users_path %>
      <% end %>
+     <% if impersonating? %>
+      <p>Impersonating</p>
+      <%= link_to "Stop impersonating", admin_user_impersonation_path(current_user.id), method: :delete %>
+      <% end %>
    </small>
  </footer>

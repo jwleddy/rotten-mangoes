@@ -15,7 +15,24 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
-  
-  helper_method :current_user
+
+  def only_admins
+    redirect_to root_path unless admin?
+  end
+
+  def admin?
+    current_user && (current_user.admin? || impersonating?)
+  end
+
+  def impersonating?
+    if session[:actual_user_id].present?
+      user = User.find(session[:actual_user_id])
+      user.admin?
+    else
+      false
+    end
+  end
+
+  helper_method :current_user, :admin?, :impersonating?
 
 end
