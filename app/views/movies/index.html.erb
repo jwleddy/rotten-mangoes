@@ -12,7 +12,14 @@
 </div>
   <%= submit_tag "Search" %>
 <% end %>
-
-<% @movies.each do |movie| %>
-  <%= render partial: "movie", locals: {movie: movie} %>
-<% end %>
+<div id="grid-container" class="cols">
+  <div class="movie-col col-md-3"></div>
+  <div class="movie-col col-md-3"></div>
+  <div class="movie-col col-md-3"></div>
+  <div class="movie-col col-md-3"></div>
+</div>
+<div id="holder">
+  <% @movies.each do |movie| %>
+    <%= render partial: "movie", locals: {movie: movie} %>
+  <% end %>
+<div>
