@@ -1,4 +1,4 @@
-<div class="movie-box">
+<div class="movie-box col-md-3">
   <%= link_to image_tag(movie.poster_image.main.url), movie_path(movie) %>
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
   <h2>Average Rating: <%= movie.review_average %>/10</h2>

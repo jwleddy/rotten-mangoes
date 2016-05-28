@@ -6,38 +6,22 @@ $(document).ready(function() {
   function assignToColumn(movieBox) {
     var shortestIdx = $('.movie-col')
     .toArray()
-    .map( (x) => $(x).height() )
+    .map((x) => $(x).height())
     .reduce((prev,cur,idx,arr) => cur < arr[prev] ? idx : prev, 0);
     movieBox.appendTo('.movie-col:eq(' + shortestIdx + ')');
   }
 
   function applyToGrid() {
-    $('#holder .movie-box').each(function() {
-      assignToColumn($(this));
-    });
+    for (i = 0; i <= $('#holder .movie-box').length; i += 4) {
+      $('#holder .movie-box').slice(0,4).sort(function(a, b) {
+        return $(a).height() < $(b).height() ? 1 : -1;
+      }).each(function() {
+        $(this).removeClass('col-md-3');
+        assignToColumn($(this));
+      });
+    }
   }
 
 applyToGrid();
 
 });
-
-
-// $(document).ready(function() {
-//
-//   function assignToColumn(movieBox) {
-//     var shortestIdx = $('.movie-col')
-//     .toArray()
-//     .map( (x) => $(x).height() )
-//     .reduce((prev,cur,idx,arr) => cur < arr[prev] ? idx : prev, 0);
-//     movieBox.appendTo('.movie-col:eq(' + shortestIdx + ')');
-//   }
-//
-//   function applyToGrid() {
-//     $('#holder .movie-box').each(function() {
-//       assignToColumn($(this));
-//     });
-//   }
-//
-// applyToGrid();
-//
-// });

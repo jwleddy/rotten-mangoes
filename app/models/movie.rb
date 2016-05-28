@@ -19,7 +19,11 @@ class Movie < ActiveRecord::Base
 
   def review_average
     if reviews.size > 0
-      (reviews.sum(:rating_out_of_ten)/reviews.size.to_f).round(1)
+      avg_rating = (reviews.sum(:rating_out_of_ten)/reviews.size.to_f).round(1)
+      if avg_rating % 1 == 0.0
+        avg_rating = reviews.sum(:rating_out_of_ten)/reviews.size
+      end
+      avg_rating
     else
       0
     end
